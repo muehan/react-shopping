@@ -9,4 +9,4 @@ ENV WATCHPACK_POLLING=true
 # fix websocket connection for hot reload
 ENV WDS_SOCKET_PORT=3001
 
-EXPOSE 3000
+EXPOSE 3001
