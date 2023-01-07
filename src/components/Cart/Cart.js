@@ -13,6 +13,8 @@ export default class Cart extends React.Component {
         };
     }
 
+    formatDecimal = (number) => Number.parseFloat(number).toFixed(2);
+
     componentDidMount() {
         console.log(this.context.items);
 
@@ -36,15 +38,32 @@ export default class Cart extends React.Component {
                         </thead>
                         <tbody>
                             {this.state.items.map((item) => (
-                                <tr>
+                                <tr key={item.key}>
                                     <td>{item.amount}</td>
                                     <td>{item.name}</td>
-                                    <td>{item.price}</td>
-                                    <td>{item.amount * item.price}</td>
+                                    <td>
+                                        {this.formatDecimal(item.price) + "$"}
+                                    </td>
+                                    <td>
+                                        {this.formatDecimal(
+                                            item.amount * item.price
+                                        ) + "$"}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
                     </Table>
+
+                    <h5>
+                        Total:{" "}
+                        {this.formatDecimal(
+                            this.state.items.reduce(
+                                (partialTotal, item) =>
+                                    partialTotal + item.amount * item.price,
+                                0
+                            )
+                        )}
+                    </h5>
                 </Container>
             );
         } else {
