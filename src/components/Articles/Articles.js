@@ -48,10 +48,6 @@ export default class Articles extends React.Component {
                             <Article
                                 article={article}
                                 key={article.id}
-                                name={article.name}
-                                description={article.description}
-                                image={article.image}
-                                price={article.price}
                             />
                         ))}
                     </Row>

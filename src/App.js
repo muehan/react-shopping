@@ -26,8 +26,6 @@ export default class App extends React.Component {
     }
 
     handleAddToCart = (article) => {
-        console.log("action invoked");
-        console.log(article);
         this.setState((oldstate) => ({
             items: [...oldstate.items, article],
             addItemToArticle: this.handleAddToCart,

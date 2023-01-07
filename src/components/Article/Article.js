@@ -14,13 +14,13 @@ export default class Article extends React.Component {
     render() {
         return (
             <Card style={{ width: "18rem", padding: "10px", margin: "10px" }}>
-                <Card.Img variant="top" height="150" src={this.props.image} />
+                <Card.Img variant="top" height="150" src={this.props.article.image} />
                 <Card.Body>
-                    <Card.Title>{this.props.name}</Card.Title>
+                    <Card.Title>{this.props.article.name}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
-                        {this.formatDecimal(this.props.price)}$
+                        {this.formatDecimal(this.props.article.price)}$
                     </Card.Subtitle>
-                    <Card.Text>{this.props.description}</Card.Text>
+                    <Card.Text>{this.props.article.description}</Card.Text>
                     <Card.Link href="#">Details</Card.Link>
                     <CartContext.Consumer>
                         {({ items, addItemToArticle }) => (
