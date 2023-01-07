@@ -5,15 +5,19 @@ import "./Articles.css";
 
 import { createServer } from "miragejs";
 
+import articles from "./mock-data/articledata";
+
+
 let server = createServer();
-server.get("/api/articles", {
-    articles: [{ id: 1, name: "Cake", description: "jummy cake" }],
-});
+server.get("/api/articles", articles);
 
 export default class Articles extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { articles: [] };
+        this.state = {
+            articles: [],
+            images: [],
+        };
     }
 
     componentDidMount() {
@@ -45,6 +49,7 @@ export default class Articles extends React.Component {
                             key={article.id}
                             name={article.name}
                             description={article.description}
+                            image={article.image}
                         />
                     ))}
                 </Container>

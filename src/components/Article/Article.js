@@ -12,11 +12,12 @@ export default class Article extends React.Component {
   render() {
     return (
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img variant="top" src={this.props.image} />
         <Card.Body>
           <Card.Title>{this.props.name}</Card.Title>
           <Card.Text>{this.props.description}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="info">Details</Button>
+          <Button variant="secondary">Add to Card</Button>
         </Card.Body>
       </Card>
     );
