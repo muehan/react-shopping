@@ -1,0 +1,8 @@
+{
+    "rules": {
+        "no-useless-constructor": 0,
+        "parserOptions": {
+            "sourceType": "module"
+        }
+    }
+}

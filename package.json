@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "miragejs": "^0.1.46"
+    "miragejs": "^0.1.46",
+    "generate-react-cli": "^8.2.0"
   }
 }
