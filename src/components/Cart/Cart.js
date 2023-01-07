@@ -37,18 +37,21 @@ export default class Cart extends React.Component {
                         </thead>
                         <tbody>
                             {this.state.items.map((item) => (
-                                <tr key={item.key}>
-                                    <td>{item.amount}</td>
-                                    <td>{item.name}</td>
-                                    <td>
-                                        {this.formatDecimal(item.price) + "$"}
-                                    </td>
-                                    <td>
-                                        {this.formatDecimal(
-                                            item.amount * item.price
-                                        ) + "$"}
-                                    </td>
-                                </tr>
+                                <React.Fragment key={item.id}>
+                                    <tr>
+                                        <td>{item.amount}</td>
+                                        <td>{item.name}</td>
+                                        <td>
+                                            {this.formatDecimal(item.price) +
+                                                "$"}
+                                        </td>
+                                        <td>
+                                            {this.formatDecimal(
+                                                item.amount * item.price
+                                            ) + "$"}
+                                        </td>
+                                    </tr>
+                                </React.Fragment>
                             ))}
                         </tbody>
                     </Table>
