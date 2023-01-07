@@ -3,33 +3,39 @@ import React from "react";
 
 import { CartContext } from "./cart-conext";
 
-import {
-    Routes,
-    Route,
-    Navigate,
-    BrowserRouter,
-} from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 
 import Menu from "./components/Menu/Menu";
 import Home from "./components/Home/Home";
 import Articles from "./components/Articles/Articles";
 import Cart from "./components/Cart/Cart";
 
-
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [ ],
+            items: [],
             addItemToArticle: this.handleAddToCart,
         };
     }
 
     handleAddToCart = (article) => {
-        this.setState((oldstate) => ({
-            items: [...oldstate.items, article],
-            addItemToArticle: this.handleAddToCart,
-        }));
+
+        let basketItem = this.state.items.filter((x) => x.id == article.id)[0];
+
+        if (basketItem) {
+            basketItem.amount += 1;
+        } else {
+            basketItem = {
+                ...article,
+                amount: 1,
+            };
+
+            this.setState((oldstate) => ({
+                items: [...oldstate.items, basketItem],
+                addItemToArticle: this.handleAddToCart,
+            }));
+        }
     };
 
     render() {

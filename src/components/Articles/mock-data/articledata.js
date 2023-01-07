@@ -21,7 +21,7 @@ export default {
         },
         {
             id: 3,
-            name: "bike",
+            name: "Bike",
             description: "ride it after the cake",
             image: image3,
             price: 2399.00,
