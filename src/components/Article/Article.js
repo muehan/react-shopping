@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import { CartContext } from "./../../cart-conext";
 import "./Article.css";
 
 export default class Article extends React.Component {
@@ -22,9 +22,20 @@ export default class Article extends React.Component {
                     </Card.Subtitle>
                     <Card.Text>{this.props.description}</Card.Text>
                     <Card.Link href="#">Details</Card.Link>
-                    <Button variant="secondary">Add to Card</Button>
+                    <CartContext.Consumer>
+                        {({ items, addItemToArticle }) => (
+                            <Button
+                                variant="secondary"
+                                onClick={() => addItemToArticle(this.props.article)}
+                            >
+                                Add to Card
+                            </Button>
+                        )}
+                    </CartContext.Consumer>
                 </Card.Body>
             </Card>
         );
     }
 }
+
+Article.contextType = CartContext;

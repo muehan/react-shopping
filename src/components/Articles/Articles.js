@@ -1,5 +1,4 @@
 import { Row, Container } from "react-bootstrap";
-
 import React from "react";
 import Article from "../Article/Article";
 import "./Articles.css";
@@ -26,7 +25,6 @@ export default class Articles extends React.Component {
             .then((res) => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     this.setState({
                         isLoaded: true,
                         articles: result.articles,
@@ -48,6 +46,7 @@ export default class Articles extends React.Component {
                     <Row>
                         {this.state.articles.map((article) => (
                             <Article
+                                article={article}
                                 key={article.id}
                                 name={article.name}
                                 description={article.description}
