@@ -1,4 +1,5 @@
-import Container from "react-bootstrap/Container";
+import { Row, Container } from "react-bootstrap";
+
 import React from "react";
 import Article from "../Article/Article";
 import "./Articles.css";
@@ -44,14 +45,17 @@ export default class Articles extends React.Component {
         if (this.state.articles) {
             return (
                 <Container>
-                    {this.state.articles.map((article) => (
-                        <Article
-                            key={article.id}
-                            name={article.name}
-                            description={article.description}
-                            image={article.image}
-                        />
-                    ))}
+                    <Row>
+                        {this.state.articles.map((article) => (
+                            <Article
+                                key={article.id}
+                                name={article.name}
+                                description={article.description}
+                                image={article.image}
+                                price={article.price}
+                            />
+                        ))}
+                    </Row>
                 </Container>
             );
         }
