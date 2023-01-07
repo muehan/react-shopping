@@ -14,7 +14,7 @@ const Menu = () => (
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/articles">Articles</Nav.Link>
-            <Nav.Link href="#link">Cart</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
