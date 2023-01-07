@@ -2,7 +2,6 @@ import { Row, Container } from "react-bootstrap";
 import React from "react";
 import "./Cart.css";
 import { CartContext } from "./../../cart-conext";
-import ListGroup from "react-bootstrap/ListGroup";
 import Table from "react-bootstrap/Table";
 
 export default class Cart extends React.Component {
