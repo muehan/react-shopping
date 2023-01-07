@@ -1,17 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-import Menu from './components/menu/menu';
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Menu from './components/Menu/Menu';
+import Home from './components/Home/Home';
+import Articles from './components/Articles/Articles';
+
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "/home", element: <Home /> },
+  { path: "/articles", element: <Articles /> },
+]);
+
 
 function App() {
   return (
     <div className="App">
       <Menu />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is a demo react web shop
-        </p>
-      </header>
+      <RouterProvider router={router} />
     </div>
   );
 }
