@@ -16,12 +16,19 @@ export default class App extends React.Component {
         this.state = {
             items: [],
             addItemToArticle: this.handleAddToCart,
+            deleteArticle: this.handleDeleteArticle,
         };
+    }
+
+    handleDeleteArticle = (articleId) => {
+        this.setState((oldstate) => ({
+            items: oldstate.items.filter((x) => x.id !== articleId),
+        }));
     }
 
     handleAddToCart = (article) => {
 
-        let basketItem = this.state.items.filter((x) => x.id == article.id)[0];
+        let basketItem = this.state.items.filter((x) => x.id === article.id)[0];
 
         if (basketItem) {
             basketItem.amount += 1;
@@ -33,7 +40,6 @@ export default class App extends React.Component {
 
             this.setState((oldstate) => ({
                 items: [...oldstate.items, basketItem],
-                addItemToArticle: this.handleAddToCart,
             }));
         }
     };

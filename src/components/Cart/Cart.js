@@ -3,27 +3,22 @@ import React from "react";
 import "./Cart.css";
 import { CartContext } from "./../../cart-conext";
 import Table from "react-bootstrap/Table";
+import { Trash } from 'react-bootstrap-icons';
 
 export default class Cart extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            items: [],
-        };
+
     }
 
     formatDecimal = (number) => Number.parseFloat(number).toFixed(2);
 
     componentDidMount() {
-        console.log(this.context.items);
 
-        this.setState({
-            items: this.context.items,
-        });
     }
 
     render() {
-        if (this.state.items.length >= 1) {
+        if (this.context.items.length >= 1) {
             return (
                 <Container>
                     <Table striped bordered hover>
@@ -33,10 +28,11 @@ export default class Cart extends React.Component {
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Price Calc</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.items.map((item) => (
+                            {this.context.items.map((item) => (
                                 <React.Fragment key={item.id}>
                                     <tr>
                                         <td>{item.amount}</td>
@@ -50,6 +46,13 @@ export default class Cart extends React.Component {
                                                 item.amount * item.price
                                             ) + "$"}
                                         </td>
+                                        <td>
+                                        <CartContext.Consumer>
+                                        {({ deleteArticle }) => (
+                                            <Trash onClick={() => deleteArticle(item.id)} />
+                                            )}
+                                            </CartContext.Consumer>
+                                        </td>
                                     </tr>
                                 </React.Fragment>
                             ))}
@@ -59,7 +62,7 @@ export default class Cart extends React.Component {
                     <h5>
                         Total:{" "}
                         {this.formatDecimal(
-                            this.state.items.reduce(
+                            this.context.items.reduce(
                                 (partialTotal, item) =>
                                     partialTotal + item.amount * item.price,
                                 0

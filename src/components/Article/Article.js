@@ -23,7 +23,7 @@ export default class Article extends React.Component {
                     <Card.Text>{this.props.article.description}</Card.Text>
                     <Card.Link href="#">Details</Card.Link>
                     <CartContext.Consumer>
-                        {({ items, addItemToArticle }) => (
+                        {({ addItemToArticle }) => (
                             <Button
                                 variant="secondary"
                                 onClick={() => addItemToArticle(this.props.article)}
