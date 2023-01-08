@@ -9,6 +9,7 @@ import Menu from "./components/Menu/Menu";
 import Home from "./components/Home/Home";
 import Articles from "./components/Articles/Articles";
 import Cart from "./components/Cart/Cart";
+import ShopToast from "./components/ShopToast/ShopToast";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -18,6 +19,12 @@ export default class App extends React.Component {
             addItemToArticle: this.handleAddToCart,
             deleteArticle: this.handleDeleteArticle,
         };
+    }
+
+    childEvent = null;
+    
+    setChildEvent = (event) => {
+       this.childEvent = event;
     }
 
     handleDeleteArticle = (articleId) => {
@@ -42,6 +49,8 @@ export default class App extends React.Component {
                 items: [...oldstate.items, basketItem],
             }));
         }
+
+        this.childEvent.showToastChild();
     };
 
     render() {
@@ -61,6 +70,8 @@ export default class App extends React.Component {
                             <Route path="/cart" element={<Cart />} />
                         </Routes>
                     </BrowserRouter>
+
+                    <ShopToast showToast={this.setChildEvent} />
                 </CartContext.Provider>
             </div>
         );
